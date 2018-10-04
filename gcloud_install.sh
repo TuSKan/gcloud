@@ -140,6 +140,40 @@ wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-am
 dpkg -i shiny-server-1.5.9.923-amd64.deb
 
 echo
+echo mlflow server
+echo
+mkdir -p /srv/mlflow/runs
+sh -c "cat <<EOF > /srv/mlflow/mlflow-server.sh
+PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/intel/intelpython3/bin
+source /opt/intel/intelpython3/bin/activate
+mlflow server \
+    --file-store /srv/mlflow/runs \
+    --default-artifact-root gs://mlflow-deploy/ \
+    --host 0.0.0.0 \
+    --port 5000
+EOF"
+
+chmod u+x /srv/mlflow/mlflow-server.sh
+
+sh -c "cat <<EOF > /etc/systemd/system/mlflow.service
+[Unit]
+Description=MLflow
+After=syslog.target network.target
+
+[Service]
+User=root
+Environment="PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/intel/intelpython3/bin"
+ExecStart=/bin/bash /srv/mlflow/mlflow-server.sh
+
+[Install]
+WantedBy=multi-user.target
+EOF"
+
+systemctl enable mlflow
+systemctl start mlflow
+systemctl status mlflow
+
+echo
 echo Finish!
 echo
 
