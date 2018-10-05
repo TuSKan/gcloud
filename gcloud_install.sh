@@ -60,12 +60,13 @@ mv /opt/microsoft/ropen/3.5.1/lib64/R/library /usr/lib/R
 ln -s /usr/lib/R/library /opt/microsoft/ropen/3.5.1/lib64/R/library 
 
 echo Libraries
-Rscript -e "install.packages(c('devtools','remotes','farff','BBmisc','checkmate','parallelMap','ParamHelpers','grDevices','methods','ggplot2','magrittr','utils','stats','parallel','data.table','zoo','tictoc','jsonlite','mlr','mlrCPO','mlrMBO','shiny','reticulate'))"
+Rscript -e "install.packages(c('devtools','remotes','farff','BBmisc','checkmate','parallelMap','ParamHelpers','grDevices','methods','ggplot2','ggthemes','magrittr','utils','stats','parallel','data.table','zoo','tictoc','jsonlite','mlr','mlrCPO','mlrMBO','shiny','reticulate','DT','feather', 'fst', 'ggthemes', 'haven', 'pool', 'R.utils', 'readODS', 'readxl', 'rmatio'))'
 Rscript -e "remotes::install_github('mlr-org/mlr')"
 Rscript -e "remotes::install_github('mlr-org/mlrMBO')"
 Rscript -e "remotes::install_github('mlr-org/mlrCPO')"
 Rscript -e "remotes::install_github('jakob-r/mlrHyperopt')"
 Rscript -e "remotes::install_github('TuSKan/automlr')"
+Rscript -e "remotes::install_github('TuSKan/materializer')"
 Rscript -e "remotes::install_github('rstudio/forge')"
 Rscript -e "devtools::install_github('mlflow/mlflow', subdir = 'mlflow/R/mlflow')"
 
