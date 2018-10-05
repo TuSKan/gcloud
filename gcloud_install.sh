@@ -23,7 +23,7 @@ apt-get -y upgrade
 echo
 echo apt install devlibs
 echo
-apt-get install -y software-properties-common curl  gcc g++ gfortran make libxml2-dev libgsl-dev libcairo2-dev unixodbc-dev libmariadbclient-dev xfonts-utils libpq-dev libegl1-mesa libegl1-mesa-dev libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libgles2-mesa  libllvm5.0 freeglut3-dev mesa-common-dev mesa-utils libssh-dev  libssh2-1-dev libcurl4-openssl-dev libpng-dev libclang-dev  zlib1g-dev psmisc libclang-3.8-dev libclang-common-3.8-dev libclang-dev libclang1-3.8 libgc1c2 libllvm3.8 libobjc-6-dev libobjc4 zip unzip swig
+apt-get install -y software-properties-common curl  gcc g++ gfortran make libxml2-dev libgsl-dev libcairo2-dev unixodbc-dev libmariadbclient-dev xfonts-utils libpq-dev libegl1-mesa libegl1-mesa-dev libgl1-mesa-dri libgl1-mesa-glx libglapi-mesa libgles2-mesa  libllvm5.0 freeglut3-dev mesa-common-dev mesa-utils libssh-dev  libssh2-1-dev libcurl4-openssl-dev libpng-dev libclang-dev  zlib1g-dev psmisc libclang-3.8-dev libclang-common-3.8-dev libclang-dev libclang1-3.8 libgc1c2 libllvm3.8 libobjc-6-dev libobjc4 zip unzip swig git
 apt -y --fix-broken install
 apt-get -y build-dep build-essential
 
