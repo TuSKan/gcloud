@@ -116,9 +116,10 @@ c.JupyterHub.spawner_class='sudospawner.SudoSpawner'
 c.Spawner.environment = { 'JUPYTER_ENABLE_LAB': 'yes' }
 c.Spawner.cmd = ['jupyter labhub']
 c.Spawner.default_url = '/lab'
+#c.PAMAuthenticator.open_sessions = False
 EOF"
 
-sh -c "cat <<EOF >> /etc/systemd/system/jupyterhub.service
+sh -c "cat <<EOF > /etc/systemd/system/jupyterhub.service
 [Unit]
 Description=Jupyterhub
 After=syslog.target network.target
