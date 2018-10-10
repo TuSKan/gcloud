@@ -60,7 +60,7 @@ mv /opt/microsoft/ropen/3.5.1/lib64/R/library /usr/lib/R
 ln -s /usr/lib/R/library /opt/microsoft/ropen/3.5.1/lib64/R/library 
 
 echo Libraries
-Rscript -e "install.packages(c('devtools','remotes','farff','BBmisc','checkmate','parallelMap','ParamHelpers','grDevices','methods','ggplot2','ggthemes','magrittr','utils','stats','parallel','data.table','zoo','tictoc','jsonlite','mlr','mlrCPO','mlrMBO','shiny','reticulate','DT','feather', 'fst', 'ggthemes', 'haven', 'pool', 'R.utils', 'readODS', 'readxl', 'rmatio'))'
+Rscript -e "install.packages(c('devtools','remotes','farff','BBmisc','checkmate','parallelMap','ParamHelpers','grDevices','methods','ggplot2','ggthemes','magrittr','utils','stats','parallel','data.table','zoo','tictoc','jsonlite','mlr','mlrCPO','mlrMBO','shiny','reticulate','DT','feather', 'fst', 'ggthemes', 'haven', 'pool', 'R.utils', 'readODS', 'readxl', 'rmatio'))"
 Rscript -e "remotes::install_github('mlr-org/mlr')"
 Rscript -e "remotes::install_github('mlr-org/mlrMBO')"
 Rscript -e "remotes::install_github('mlr-org/mlrCPO')"
@@ -69,6 +69,10 @@ Rscript -e "remotes::install_github('TuSKan/automlr')"
 Rscript -e "remotes::install_github('TuSKan/materializer')"
 Rscript -e "remotes::install_github('rstudio/forge')"
 Rscript -e "devtools::install_github('mlflow/mlflow', subdir = 'mlflow/R/mlflow')"
+
+Rscript -e "install.packages(c('bigrquery','dplyr','dbplyr','odbc','RMariaDB','RPostgres','RSQLite'))"
+Rscript -e "remotes::install_github('TuSKan/materializer')"
+Rscript -e "remotes::install_github('TuSKan/shinyTree')"
 
 echo
 echo install RStudio
@@ -94,7 +98,7 @@ pip install --upgrade sudospawner
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt-get update && apt-get install yarn
-wget https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-1.7.0.js -O /opt/intel/intelpython3/lib/python3.6/site-packages/jupyterlab/staging/yarn.js
+#wget https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-1.7.0.js -O /opt/intel/intelpython3/lib/python3.6/site-packages/jupyterlab/staging/yarn.js
 
 jupyter labextension install
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
@@ -107,6 +111,7 @@ mkdir /etc/jupyterhub/
 echo
 echo Config jupyterhub
 echo
+mkdir /etc/jupyterhub/
 /opt/intel/intelpython3/bin/jupyterhub --generate-config -f /etc/jupyterhub/jupyterhub_config.py
 sh -c "cat <<EOF >> /etc/jupyterhub/jupyterhub_config.py
 
@@ -145,6 +150,8 @@ echo Shiny Server
 echo
 wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb
 dpkg -i shiny-server-1.5.9.923-amd64.deb
+
+git clone https://github.com/TuSKan/DAVi.git   /srv/shiny-server/DAVi
 
 echo
 echo mlflow server
