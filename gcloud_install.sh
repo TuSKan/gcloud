@@ -41,7 +41,7 @@ source  /opt/intel/intelpython3/bin/activate
 
 echo Libraries
 pip install --upgrade pip
-pip install mlflow auto-sklearn tensorflow keras featuretools
+pip install mlflow auto-sklearn tensorflow keras featuretools google-cloud google-cloud-storage
 
 echo
 echo install Microsoft R
