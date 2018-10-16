@@ -16,6 +16,6 @@ gcloud compute --project $PROJ \
  	--machine-type "n1-standard-4" \
  	--image-project debian-cloud \
  	--image-family "debian-9" \
- 	--create-disk "size=50GB" \
+ 	--boot-disk-size "50GB" \
  	--deletion-protection \
  	--metadata-from-file startup-script="gcloud_install.sh"
