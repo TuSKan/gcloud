@@ -190,5 +190,3 @@ systemctl status mlflow
 echo
 echo Finish!
 echo
-
-/sbin/shutdown -r now
