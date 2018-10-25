@@ -77,8 +77,8 @@ Rscript -e "remotes::install_github('TuSKan/shinyTree')"
 echo
 echo install RStudio
 echo
-wget https://s3.amazonaws.com/rstudio-ide-build/server/debian9/x86_64/rstudio-server-1.2.1013-amd64.deb
-dpkg -i rstudio-server-1.2.1013-amd64.deb
+wget https://s3.amazonaws.com/rstudio-ide-build/server/debian9/x86_64/rstudio-server-1.2.1072-amd64.deb
+dpkg -i rstudio-server-1.2.1072-amd64.deb
 
 echo
 echo install jupyter lab hub
@@ -190,5 +190,3 @@ systemctl status mlflow
 echo
 echo Finish!
 echo
-
-/sbin/shutdown -r now
