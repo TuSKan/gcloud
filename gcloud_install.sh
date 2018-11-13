@@ -100,9 +100,20 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.lis
 apt-get update && apt-get install yarn
 #wget https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-1.7.0.js -O /opt/intel/intelpython3/lib/python3.6/site-packages/jupyterlab/staging/yarn.js
 
+pip install -U ipympl
+pip install -U jupyterlab-git
+
 jupyter labextension install
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
 jupyter labextension install @jupyterlab/hub-extension
+jupyter labextension install @jupyterlab/latex
+jupyter labextension install @mflevine/jupyterlab_html
+jupyter labextension install @jupyterlab/plotly-extension
+jupyter labextension install jupyter-matplotlib
+jupyter labextension install @jupyterlab/git
+jupyter labextension install dask-labextension
+
+jupyter serverextension enable --py jupyterlab_git
 
 wget https://gist.githubusercontent.com/lambdalisue/f01c5a65e81100356379/raw/ecf427429f07a6c2d6c5c42198cc58d4e332b425/jupyterhub -O /etc/init.d/jupyterhub
 chmod +x /etc/init.d/jupyterhub
@@ -143,7 +154,7 @@ systemctl start jupyterhub
 systemctl status jupyterhub
 
 Rscript -e "remotes::install_github('IRkernel/IRkernel')"
-Rscript -e "IRkernel::installspec(user = FALSE)"
+Rscript -e "IRkernel::installspec(user = FALSE, prefix = '/opt/intel/intelpython3')"
 
 echo
 echo Shiny Server
