@@ -9,6 +9,7 @@ n) NAME=${OPTARG};;
 esac
 done
 
+#--preemptible
 
 gcloud compute --project $PROJ \
 	instances create $NAME \
@@ -18,4 +19,6 @@ gcloud compute --project $PROJ \
  	--image-family "debian-9" \
  	--boot-disk-size "50GB" \
  	--deletion-protection \
- 	--metadata-from-file startup-script="gcloud_install.sh"
+	--tags "rstudio,jupyter,shiny,mlserver" \
+ 	--metadata-from-file startup-script="init_script.sh" \
+	--scopes="bigquery,cloud-platform,cloud-source-repos,compute-rw,datastore,default,storage-full,sql-admin,userinfo-email,pubsub,service-control,service-management,taskqueue,trace,monitoring,logging-write"
